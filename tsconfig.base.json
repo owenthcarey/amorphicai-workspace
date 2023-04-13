@@ -1,0 +1,54 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": [
+      "es2017",
+      "dom"
+    ],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@amorphicai-workspace/xplat/core": [
+        "libs/xplat/core/src/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/environments": [
+        "libs/xplat/core/src/lib/environments/base/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/features": [
+        "libs/xplat/features/src/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/nativescript/core": [
+        "libs/xplat/nativescript/core/src/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/nativescript/features": [
+        "libs/xplat/nativescript/features/src/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/nativescript/utils": [
+        "libs/xplat/nativescript/utils/src/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/utils": [
+        "libs/xplat/utils/src/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/web/core": [
+        "libs/xplat/web/core/src/index.ts"
+      ],
+      "@amorphicai-workspace/xplat/web/features": [
+        "libs/xplat/web/features/src/index.ts"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "tmp"
+  ]
+}

@@ -1,0 +1,22 @@
+<ActionBar>
+  <StackLayout orientation="horizontal" width="100%">
+    <Label marginRight="8" text="Messages" verticalAlignment="center"></Label>
+    <SearchBar hint="Enter search term here ..." width="100%" [text]="searchPhrase"
+               (clear)="onClear($event)" (submit)="onSubmit($event)"
+               (textChange)="onTextChanged($event)">
+    </SearchBar>
+  </StackLayout>
+</ActionBar>
+<GridLayout rows="*">
+  <CollectionView colWidth="100%" orientation="vertical" row="0" rowHeight="20%"
+                  [items]="countries" (itemLoading)="onItemLoading($event)"
+                  (itemTap)="onItemTap($event)" (loadMoreItems)="onLoadMoreItems($event)"
+                  (scroll)="onScroll($event)" (scrollEnd)="onScrollEnd($event)">
+    <ng-template let-item="item">
+      <StackLayout height="100%" width="100%">
+        <Label class="text-white" horizontalAlignment="center" textWrap="true"
+               verticalAlignment="center" [text]="item.name"></Label>
+      </StackLayout>
+    </ng-template>
+  </CollectionView>
+</GridLayout>

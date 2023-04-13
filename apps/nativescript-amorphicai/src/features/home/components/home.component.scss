@@ -1,0 +1,23 @@
+GridLayout {
+  horizontal-align: center;
+  vertical-align: middle;
+}
+
+.card {
+  position: absolute;
+  width: 80%;
+  height: 60%;
+  border-radius: 10;
+  background-color: white;
+  elevation: 10;
+}
+
+.card-image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10;
+}
+
+.top-card {
+  elevation: 20;
+}
