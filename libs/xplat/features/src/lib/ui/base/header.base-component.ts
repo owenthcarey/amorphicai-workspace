@@ -1,7 +1,7 @@
-import { Directive, Input, Output, EventEmitter } from "@angular/core";
+import { Directive, Input, Output, EventEmitter } from '@angular/core';
 
 // libs
-import { BaseComponent } from "@amorphicai-workspace/xplat/core";
+import { BaseComponent } from '@amorphicai-workspace/xplat/core';
 
 @Directive()
 export abstract class HeaderBaseComponent extends BaseComponent {

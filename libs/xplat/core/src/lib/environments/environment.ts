@@ -1,4 +1,4 @@
-import { IEnvironment } from "./environment.interface";
+import { IEnvironment } from './environment.interface';
 
 /**
  * Workspace shared environment for ease of use across all shared code and apps

@@ -1,7 +1,10 @@
 import { IEnvironment } from '@amorphicai-workspace/xplat/core';
 import { deepMerge } from '@amorphicai-workspace/xplat/utils';
 
-export const environmentBase = function (baseWorkspaceEnv: IEnvironment, appEnvironmentCustom: IEnvironment = {}) {
+export const environmentBase = function (
+  baseWorkspaceEnv: IEnvironment,
+  appEnvironmentCustom: IEnvironment = {}
+) {
   // base app environment + customizations
   const appEnvironment = deepMerge(
     <IEnvironment>{

@@ -1,8 +1,8 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
-import {LoginBaseComponent} from '@amorphicai-workspace/xplat/features';
+import { LoginBaseComponent } from '@amorphicai-workspace/xplat/features';
 
-import {User} from '@amorphicai-workspace/xplat/core';
+import { User } from '@amorphicai-workspace/xplat/core';
 
 import {
   UserCredential,
@@ -13,22 +13,28 @@ import {
   TwitterAuthProvider,
 } from 'firebase/auth';
 import * as firebaseui from 'firebaseui';
-import {Auth} from '@angular/fire/auth';
-import {FirestoreService} from "@amorphicai-workspace/xplat/core";
+import { Auth } from '@angular/fire/auth';
+import { FirestoreService } from '@amorphicai-workspace/xplat/web/core';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginUserFormComponent } from '@amorphicai-workspace/xplat/web/features';
 
 @Component({
   selector: 'amorphicai-workspace-login',
   templateUrl: 'login.component.html',
+  styleUrls: ['login.component.scss'],
 })
-export class LoginComponent extends LoginBaseComponent implements OnInit, OnDestroy {
-  private readonly auth: Auth;
-  private firestoreService: FirestoreService;
+export class LoginComponent
+  extends LoginBaseComponent
+  implements OnInit, OnDestroy
+{
   private ui?: firebaseui.auth.AuthUI;
 
-  constructor(auth: Auth, firestoreService: FirestoreService) {
+  constructor(
+    private readonly auth: Auth,
+    private firestoreService: FirestoreService,
+    private dialog: MatDialog
+  ) {
     super();
-    this.auth = auth;
-    this.firestoreService = firestoreService;
   }
 
   /**
@@ -47,7 +53,17 @@ export class LoginComponent extends LoginBaseComponent implements OnInit, OnDest
       credentialHelper: firebaseui.auth.CredentialHelper.NONE,
       callbacks: {
         signInSuccessWithAuthResult: (authResult: UserCredential) => {
-          // this.createAndStoreNewUser(authResult);
+          this.firestoreService
+            .checkIfUserExists(authResult.user.uid)
+            .then((userExists) => {
+              console.log('User exists:', userExists);
+              if (!userExists) {
+                // this.router.navigate(['/login-user-form']);
+                // Close the current dialog and open a new dialog with LoginUserFormComponent
+                this.dialog.closeAll(); // Close the LoginComponent dialog
+                this.dialog.open(LoginUserFormComponent); // Open the LoginUserFormComponent dialog
+              }
+            });
           // Prevents redirect after authentication.
           return false;
         },
@@ -64,49 +80,51 @@ export class LoginComponent extends LoginBaseComponent implements OnInit, OnDest
    * Clean up FirebaseUI AuthUI instance.
    */
   override ngOnDestroy(): void {
-    super.ngOnDestroy()
+    super.ngOnDestroy();
     this.ui?.delete();
   }
 
-  /**
-   * Handle user creation with provided auth result.
-   * @param authResult The authenticated user result.
-   */
-  private async createAndStoreNewUser(authResult: UserCredential): Promise<void> {
-    const geoPoint = await this.getUserGeolocation();
-    const newUser = new User(
-      undefined,
-      undefined,
-      new Date(),
-      undefined,
-      undefined,
-      geoPoint,
-      undefined,
-      authResult.user.uid,
-      undefined
-    );
-    // await this.firestoreService.addNewUser(newUser);
-  }
-
-  /**
-   * Get the user's geolocation coordinates as a tuple [latitude, longitude].
-   * @returns A promise that resolves to a tuple [latitude, longitude] or rejects with an error.
-   */
-  private async getUserGeolocation(): Promise<[number, number]> {
-    return new Promise((resolve, reject) => {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-          position => {
-            resolve([position.coords.latitude, position.coords.longitude]);
-          },
-          error => {
-            reject(error);
-          },
-          {enableHighAccuracy: true, timeout: 10000, maximumAge: 0}
-        );
-      } else {
-        reject(new Error('Geolocation is not supported by this browser.'));
-      }
-    });
-  }
+  // /**
+  //  * Handle user creation with provided auth result.
+  //  * @param authResult The authenticated user result.
+  //  */
+  // private async createAndStoreNewUser(
+  //   authResult: UserCredential
+  // ): Promise<void> {
+  //   const geoPoint = await this.getUserGeolocation();
+  //   const newUser = new User(
+  //     undefined,
+  //     undefined,
+  //     new Date(),
+  //     undefined,
+  //     undefined,
+  //     geoPoint,
+  //     undefined,
+  //     authResult.user.uid,
+  //     undefined
+  //   );
+  //   // await this.firestoreService.addNewUser(newUser);
+  // }
+  //
+  // /**
+  //  * Get the user's geolocation coordinates as a tuple [latitude, longitude].
+  //  * @returns A promise that resolves to a tuple [latitude, longitude] or rejects with an error.
+  //  */
+  // private async getUserGeolocation(): Promise<[number, number]> {
+  //   return new Promise((resolve, reject) => {
+  //     if (navigator.geolocation) {
+  //       navigator.geolocation.getCurrentPosition(
+  //         (position) => {
+  //           resolve([position.coords.latitude, position.coords.longitude]);
+  //         },
+  //         (error) => {
+  //           reject(error);
+  //         },
+  //         { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+  //       );
+  //     } else {
+  //       reject(new Error('Geolocation is not supported by this browser.'));
+  //     }
+  //   });
+  // }
 }

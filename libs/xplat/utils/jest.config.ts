@@ -1,11 +1,11 @@
 /* eslint-disable */
 export default {
-  displayName: "xplat-utils",
-  preset: "../../../jest.preset.js",
-  testEnvironment: "node",
+  displayName: 'xplat-utils',
+  preset: '../../../jest.preset.js',
+  testEnvironment: 'node',
   transform: {
-    "^.+\\.[tj]sx?$": ["ts-jest", { tsconfig: "<rootDir>/tsconfig.spec.json" }],
+    '^.+\\.[tj]sx?$': ['ts-jest', { tsconfig: '<rootDir>/tsconfig.spec.json' }],
   },
-  moduleFileExtensions: ["ts", "tsx", "js", "jsx"],
-  coverageDirectory: "../../../coverage/libs/xplat/utils",
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  coverageDirectory: '../../../coverage/libs/xplat/utils',
 };

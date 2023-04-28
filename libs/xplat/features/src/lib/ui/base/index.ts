@@ -1,1 +1,1 @@
-export * from "./header.base-component";
+export * from './header.base-component';

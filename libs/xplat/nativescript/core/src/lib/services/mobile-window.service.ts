@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
-import { Device, isIOS, Dialogs, AlertOptions, ConfirmOptions } from '@nativescript/core';
+import {
+  Device,
+  isIOS,
+  Dialogs,
+  AlertOptions,
+  ConfirmOptions,
+} from '@nativescript/core';
 import * as timer from '@nativescript/core/timer';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class MobileWindowService {
   private _dialogOpened = false;
@@ -11,25 +17,25 @@ export class MobileWindowService {
   get navigator(): any {
     return {
       language: Device.language,
-      userAgent: 'nativescript'
+      userAgent: 'nativescript',
     };
   }
   get location(): any {
     return {
-      host: 'nativescript'
+      host: 'nativescript',
     };
   }
 
   alert(msg: string): Promise<void> {
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (!this._dialogOpened && msg) {
         this._dialogOpened = true;
         if (typeof msg === 'string') {
           const options: AlertOptions = {
             message: <string>msg,
-            okButtonText: 'Ok'
+            okButtonText: 'Ok',
           };
-          Dialogs.alert(options).then(ok => {
+          Dialogs.alert(options).then((ok) => {
             this._dialogOpened = false;
             resolve();
           });
@@ -46,10 +52,10 @@ export class MobileWindowService {
           title: 'Confirm',
           message,
           okButtonText: 'Ok',
-          cancelButtonText: 'Cancel'
+          cancelButtonText: 'Cancel',
         };
 
-        Dialogs.confirm(options).then(ok => {
+        Dialogs.confirm(options).then((ok) => {
           this._dialogOpened = false;
           if (ok) {
             resolve();

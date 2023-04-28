@@ -1,6 +1,6 @@
-import { Directive, Inject } from "@angular/core";
+import { Directive, Inject } from '@angular/core';
 // libs
-import { BaseComponent } from "@amorphicai-workspace/xplat/core";
+import { BaseComponent } from '@amorphicai-workspace/xplat/core';
 
 @Directive()
 export abstract class AppBaseComponent extends BaseComponent {

@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "clean": "npx rimraf hooks node_modules package-lock.json yarn.lock && npm install"
+    "clean": "npx rimraf hooks node_modules package-lock.json yarn.lock && npm install",
+    "prettier": "npx prettier --write '**/*.{html,scss,ts}'"
   },
   "private": true,
   "devDependencies": {
@@ -17,6 +18,7 @@
     "@angular/compiler-cli": "^15.2.8",
     "@angular/language-service": "^15.2.8",
     "@nativescript/eslint-plugin": "~0.0.4",
+    "@nativescript/nx": "^15.0.0",
     "@nativescript/types": "~8.5.0",
     "@nativescript/webpack": "~5.0.14",
     "@ngtools/webpack": "^15.2.6",

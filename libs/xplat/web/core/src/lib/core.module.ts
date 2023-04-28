@@ -1,14 +1,14 @@
-import { NgModule, Optional, SkipSelf } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
-import { HttpClientModule, HttpClient } from "@angular/common/http";
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
-import { throwIfAlreadyLoaded } from "@amorphicai-workspace/xplat/utils";
+import { NgModule, Optional, SkipSelf } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { throwIfAlreadyLoaded } from '@amorphicai-workspace/xplat/utils';
 import {
   CoreModule,
   PlatformLanguageToken,
   PlatformWindowToken,
-} from "@amorphicai-workspace/xplat/core";
+} from '@amorphicai-workspace/xplat/core';
 
 // bring in custom web services here...
 
@@ -18,13 +18,13 @@ export function winFactory() {
 }
 
 export function platformLangFactory() {
-  const browserLang = window.navigator.language || "en"; // fallback English
+  const browserLang = window.navigator.language || 'en'; // fallback English
   // browser language has 2 codes, ex: 'en-US'
-  return browserLang.split("-")[0];
+  return browserLang.split('-')[0];
 }
 
 export function createTranslateLoader(http: HttpClient) {
-  return new TranslateHttpLoader(http, `./assets/i18n/`, ".json");
+  return new TranslateHttpLoader(http, `./assets/i18n/`, '.json');
 }
 
 @NgModule({
@@ -56,6 +56,6 @@ export class AmorphicaiWorkspaceCoreModule {
     @SkipSelf()
     parentModule: AmorphicaiWorkspaceCoreModule
   ) {
-    throwIfAlreadyLoaded(parentModule, "AmorphicaiWorkspaceCoreModule");
+    throwIfAlreadyLoaded(parentModule, 'AmorphicaiWorkspaceCoreModule');
   }
 }

@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
-import {PROFILE_COMPONENTS, ProfileComponent} from './components';
-import {RouterModule, Routes} from "@angular/router";
+import { PROFILE_COMPONENTS, ProfileComponent } from './components';
+import { RouterModule, Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent
-  }
+    component: ProfileComponent,
+  },
 ];
 
 @NgModule({

@@ -4,12 +4,11 @@ import { Component } from '@angular/core';
 import { AppBaseComponent } from '@amorphicai-workspace/xplat/web/features';
 
 @Component({
-    selector: 'amorphicai-workspace-root',
-    templateUrl: './app.component.html'
+  selector: 'amorphicai-workspace-root',
+  templateUrl: './app.component.html',
 })
 export class AppComponent extends AppBaseComponent {
-
-    constructor() {
-        super();
-    }
+  constructor() {
+    super();
+  }
 }

@@ -4,6 +4,6 @@ import { NgModule } from '@angular/core';
 import { AmorphicaiWorkspaceCoreModule } from '@amorphicai-workspace/xplat/web/core';
 
 @NgModule({
-  imports: [AmorphicaiWorkspaceCoreModule]
+  imports: [AmorphicaiWorkspaceCoreModule],
 })
 export class CoreModule {}

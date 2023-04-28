@@ -43,7 +43,7 @@ export class MobileTranslateLoader {
               // The parse error contains the text of the body that failed to parse.
               const errorResult = {
                 error,
-                text: data
+                text: data,
               };
               observer.error(errorResult);
             }

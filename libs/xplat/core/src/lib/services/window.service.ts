@@ -1,13 +1,13 @@
 // angular
-import { Injectable, Inject, ViewContainerRef } from "@angular/core";
+import { Injectable, Inject, ViewContainerRef } from '@angular/core';
 
 // app
-import { isObject, isNativeScript } from "@amorphicai-workspace/xplat/utils";
-import { XPlatWindow } from "../models";
-import { PlatformWindowToken } from "./tokens";
+import { isObject, isNativeScript } from '@amorphicai-workspace/xplat/utils';
+import { XPlatWindow } from '../models';
+import { PlatformWindowToken } from './tokens';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class WindowService {
   constructor(

@@ -1,0 +1,99 @@
+<form [formGroup]="userForm" novalidate (ngSubmit)="onSubmit()">
+  <mat-card class="user-card">
+    <mat-card-header>
+      <mat-card-title>User Information</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="form-row">
+        <div class="form-col">
+          <mat-form-field class="form-field">
+            <input
+              matInput
+              placeholder="First name"
+              formControlName="firstName"
+            />
+            <mat-error
+              *ngIf="userForm.controls['firstName'].hasError('required')"
+            >
+              First name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+        <div class="form-col">
+          <mat-form-field class="form-field">
+            <input
+              matInput
+              placeholder="Last name"
+              formControlName="lastName"
+            />
+            <mat-error
+              *ngIf="userForm.controls['lastName'].hasError('required')"
+            >
+              Last name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-col">
+          <mat-form-field class="form-field">
+            <input matInput placeholder="Username" formControlName="username" (input)="onInput()" />
+            <mat-error
+              *ngIf="userForm.controls['username'].hasError('required')"
+            >
+              Username is <strong>required</strong>
+            </mat-error>
+            <mat-hint *ngIf="usernameExists === false">
+              Username is available
+            </mat-hint>
+            <mat-hint *ngIf="usernameExists === true">
+              Username is already taken
+            </mat-hint>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-col">
+          <mat-form-field class="form-field">
+            <input
+              matInput
+              [matDatepicker]="birthdatePicker"
+              placeholder="Birthdate"
+              formControlName="birthdate"
+            />
+            <mat-datepicker-toggle
+              matSuffix
+              [for]="birthdatePicker"
+            ></mat-datepicker-toggle>
+            <mat-datepicker #birthdatePicker></mat-datepicker>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-col">
+          <mat-form-field class="form-field">
+            <mat-select placeholder="Gender" formControlName="gender">
+              <mat-option *ngFor="let gender of genders" [value]="gender">
+                {{ gender }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-col">
+          <mat-form-field class="form-field">
+            <input
+              matInput
+              placeholder="Country Code"
+              formControlName="countryCode"
+            />
+          </mat-form-field>
+        </div>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" type="submit">Submit</button>
+    </mat-card-actions>
+  </mat-card>
+</form>

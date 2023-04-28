@@ -7,7 +7,10 @@ import { Device, isIOS, Application, Enums } from '@nativescript/core';
 // libs
 import { TranslateService } from '@ngx-translate/core';
 import { Subject } from 'rxjs';
-import { LogService, PlatformLanguageToken } from '@amorphicai-workspace/xplat/core';
+import {
+  LogService,
+  PlatformLanguageToken,
+} from '@amorphicai-workspace/xplat/core';
 
 /**
  * This service can be used for low level app wiring
@@ -18,7 +21,7 @@ import { LogService, PlatformLanguageToken } from '@amorphicai-workspace/xplat/c
  * - example of global app event wiring for resume/suspend
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AppService {
   // fundamentals
@@ -78,9 +81,8 @@ export class AppService {
       versionName = NSBundle.mainBundle.objectForInfoDictionaryKey(
         'CFBundleShortVersionString'
       );
-      buildNumber = NSBundle.mainBundle.objectForInfoDictionaryKey(
-        'CFBundleVersion'
-      );
+      buildNumber =
+        NSBundle.mainBundle.objectForInfoDictionaryKey('CFBundleVersion');
     }
     this._appVersion = `v${versionName} (${buildNumber})`;
     this._log.debug('App version:', this._appVersion);
@@ -107,11 +109,13 @@ export class AppService {
 
     // set initial orientation
     let orientation = getOrientation();
-    this.orientation = orientation ? orientation : Enums.DeviceOrientation.portrait;
+    this.orientation = orientation
+      ? orientation
+      : Enums.DeviceOrientation.portrait;
     this._log.debug('current orientation:', this.orientation);
 
     // handle orientation changes
-    Application.on(Application.orientationChangedEvent, e => {
+    Application.on(Application.orientationChangedEvent, (e) => {
       // sometimes e.newValue will be undefined, ignore those
       if (e.newValue && this.orientation !== e.newValue) {
         orientation = getOrientation();
@@ -126,7 +130,7 @@ export class AppService {
   }
 }
 
-const getOrientation = function() {
+const getOrientation = function () {
   if (isIOS) {
     const deviceOrientation = UIDevice.currentDevice.orientation;
     if (
@@ -158,7 +162,7 @@ const getOrientation = function() {
   }
 };
 
-const getContext = function(): android.app.Application {
+const getContext = function (): android.app.Application {
   const ctx = java.lang.Class.forName('android.app.AppGlobals')
     .getMethod('getInitialApplication', null)
     .invoke(null, null);

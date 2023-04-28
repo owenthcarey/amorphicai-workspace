@@ -1,5 +1,5 @@
 // angular
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 export interface IDebug {
   LEVEL_1: boolean;
@@ -10,7 +10,7 @@ export interface IDebug {
 }
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class LogService {
   public static DEBUG: IDebug = {

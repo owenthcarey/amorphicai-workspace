@@ -1,26 +1,22 @@
-import {Component, ElementRef, OnDestroy, ViewChild} from '@angular/core';
-import {BaseComponent} from '@amorphicai-workspace/xplat/core';
-import {CdkDragEnd} from '@angular/cdk/drag-drop';
-import {MatDialog} from '@angular/material/dialog';
-import {LoginComponent} from "@amorphicai-workspace/xplat/web/features";
-import {Auth, authState, User} from '@angular/fire/auth';
-import {Subscription} from 'rxjs';
+import { Component, ElementRef, OnDestroy, ViewChild } from '@angular/core';
+import { BaseComponent } from '@amorphicai-workspace/xplat/core';
+import { CdkDrag, CdkDragEnd } from '@angular/cdk/drag-drop';
+import { MatDialog } from '@angular/material/dialog';
+import { LoginComponent } from '@amorphicai-workspace/xplat/web/features';
+import { Auth, authState, User } from '@angular/fire/auth';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'amorphicai-workspace-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.scss']
+  styleUrls: ['home.component.scss'],
 })
 export class HomeComponent extends BaseComponent implements OnDestroy {
-  @ViewChild('topCard', {read: ElementRef}) topCard?: ElementRef;
-  @ViewChild('bottomCard', {read: ElementRef}) bottomCard?: ElementRef;
+  @ViewChild('topCard', { read: ElementRef }) topCard?: ElementRef;
+  @ViewChild('bottomCard', { read: ElementRef }) bottomCard?: ElementRef;
+  @ViewChild(CdkDrag) topCardDrag?: CdkDrag;
 
-  images = [
-    'https://via.placeholder.com/300x200/FF5733',
-    'https://via.placeholder.com/300x200/FFBD33',
-    'https://via.placeholder.com/300x200/75FF33',
-    'https://via.placeholder.com/300x200/33FF57',
-  ];
+  images = this.generateImageUrls(100);
 
   topImageUrl = this.images[0];
   bottomImageUrl = this.images[1];
@@ -29,10 +25,23 @@ export class HomeComponent extends BaseComponent implements OnDestroy {
 
   constructor(private dialog: MatDialog, private auth: Auth) {
     super();
-    this.authStateSubscription = authState(this.auth).subscribe((user: User | null) => {
-      console.log('Firebase userId:', user?.uid);
-    });
+    this.authStateSubscription = authState(this.auth).subscribe(
+      (user: User | null) => {
+        console.log('Firebase userId:', user?.uid);
+      }
+    );
     this.auth.signOut();
+  }
+
+  generateImageUrls(count: number) {
+    const imageUrls = [];
+    for (let i = 0; i < count; i++) {
+      const imageUrl = `https://source.unsplash.com/300x450/?people&random=${
+        Date.now() + i
+      }`;
+      imageUrls.push(imageUrl);
+    }
+    return imageUrls;
   }
 
   override ngOnDestroy() {
@@ -44,7 +53,7 @@ export class HomeComponent extends BaseComponent implements OnDestroy {
     const topCardEl: HTMLElement = this.topCard?.nativeElement;
     const bottomCardEl: HTMLElement = this.bottomCard?.nativeElement;
 
-    const {x} = event.distance;
+    const { x } = event.distance;
     const threshold = topCardEl.offsetWidth / 4;
 
     if (Math.abs(x) > threshold) {
@@ -57,6 +66,7 @@ export class HomeComponent extends BaseComponent implements OnDestroy {
         this.updateImages();
         topCardEl.style.transition = '';
         topCardEl.style.transform = '';
+        this.topCardDrag?.reset(); // Add this line
       }, 500);
     } else {
       // Swiped not far enough; return card to original position
@@ -65,6 +75,7 @@ export class HomeComponent extends BaseComponent implements OnDestroy {
 
       setTimeout(() => {
         topCardEl.style.transition = '';
+        this.topCardDrag?.reset(); // Add this line
       }, 500);
     }
 
@@ -77,7 +88,7 @@ export class HomeComponent extends BaseComponent implements OnDestroy {
 
   updateImages() {
     this.imageIndex = (this.imageIndex + 1) % this.images.length;
-    this.bottomImageUrl = this.topImageUrl;
-    this.topImageUrl = this.images[this.imageIndex];
+    this.topImageUrl = this.bottomImageUrl;
+    this.bottomImageUrl = this.images[this.imageIndex];
   }
 }

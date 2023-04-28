@@ -1,19 +1,18 @@
-import {AfterViewInit, Component, ElementRef, ViewChild} from '@angular/core';
-
-import {BaseComponent, TensorflowService} from '@amorphicai-workspace/xplat/core';
-import {PanGestureEventData, Screen, StackLayout, View} from '@nativescript/core';
-import {Canvas} from '@nativescript/canvas';
+import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Canvas } from '@nativescript/canvas';
+import { BaseComponent } from '@amorphicai-workspace/xplat/core';
+import { PanGestureEventData, Screen, StackLayout } from '@nativescript/core';
+import { TensorflowService } from '@amorphicai-workspace/xplat/nativescript/core';
 
 @Component({
   moduleId: module.id,
   selector: 'amorphicai-workspace-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent extends BaseComponent {
-  @ViewChild('topCard', {read: ElementRef}) topCard: ElementRef;
-  @ViewChild('bottomCard', {read: ElementRef}) bottomCard: ElementRef;
-  // @ViewChild('canvas', {read: ElementRef}) canvas: ElementRef;
+  @ViewChild('topCard', { read: ElementRef }) topCard: ElementRef;
+  @ViewChild('bottomCard', { read: ElementRef }) bottomCard: ElementRef;
 
   images = [
     'https://via.placeholder.com/300x200/FF5733',
@@ -33,9 +32,11 @@ export class HomeComponent extends BaseComponent {
   async onCanvasReady(args) {
     console.log('onCanvasReady()');
     const canvas = args.object as Canvas;
-    const webGLRenderingContext = canvas.getContext('webgl2') as unknown as WebGLRenderingContext
+    const webGLRenderingContext = canvas.getContext(
+      'webgl2'
+    ) as unknown as WebGLRenderingContext;
     await this.tensorflowService.init(webGLRenderingContext);
-    this.tensorflowService.multiplyMatrices();
+    // this.tensorflowService.multiplyMatrices();
     // this.tensorflowService.loadAndFineTuneModel();
   }
 
@@ -55,7 +56,7 @@ export class HomeComponent extends BaseComponent {
       }
 
       topCard.animate({
-        translate: {x: 0, y: 0},
+        translate: { x: 0, y: 0 },
         duration: 200,
       });
     }

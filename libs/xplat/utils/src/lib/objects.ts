@@ -1,9 +1,9 @@
 export const isString = function (arg: any) {
-  return typeof arg === "string";
+  return typeof arg === 'string';
 };
 
 export const isObject = function (arg: any) {
-  return arg && typeof arg === "object";
+  return arg && typeof arg === 'object';
 };
 
 /**
@@ -18,7 +18,7 @@ export function deepClone(obj: any): any {
       //typeof date = [object Object], results in empty object.
       const value = obj[key];
       ret[key] = new Date(value.valueOf());
-    } else if (typeof obj[key] === "object") {
+    } else if (typeof obj[key] === 'object') {
       ret[key] = deepClone(obj[key]);
     } else {
       ret[key] = obj[key];
@@ -44,7 +44,7 @@ export function deepMerge(obj1: any, obj2: any): any {
       if (typeof value !== typeof obj2[key]) {
         // value type mismatch, always take obj2's values.
         result[key] = obj2[key];
-      } else if (typeof value == "object") {
+      } else if (typeof value == 'object') {
         result[key] = deepMerge(value, obj2[key]);
       } else {
         result[key] = obj2[key];

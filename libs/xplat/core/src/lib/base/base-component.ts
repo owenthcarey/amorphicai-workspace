@@ -1,7 +1,7 @@
-import { Directive, OnDestroy } from "@angular/core";
+import { Directive, OnDestroy } from '@angular/core';
 
 // libs
-import { Subject } from "rxjs";
+import { Subject } from 'rxjs';
 
 @Directive()
 export abstract class BaseComponent implements OnDestroy {

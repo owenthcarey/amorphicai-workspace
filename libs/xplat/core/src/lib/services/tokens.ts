@@ -1,5 +1,5 @@
-import { InjectionToken, Type } from "@angular/core";
-import { IXPlatWindow } from "../models";
+import { InjectionToken, Type } from '@angular/core';
+import { IXPlatWindow } from '../models';
 
 /**
  * Various InjectionTokens shared across all platforms
@@ -7,8 +7,8 @@ import { IXPlatWindow } from "../models";
  */
 
 export const PlatformLanguageToken = new InjectionToken<string>(
-  "PlatformLanguageToken"
+  'PlatformLanguageToken'
 );
 export const PlatformWindowToken = new InjectionToken<IXPlatWindow>(
-  "PlatformWindowToken"
+  'PlatformWindowToken'
 );

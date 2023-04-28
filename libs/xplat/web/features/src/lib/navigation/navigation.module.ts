@@ -2,13 +2,13 @@ import { NgModule } from '@angular/core';
 import { NavigationModule as SharedNavigationModule } from '@amorphicai-workspace/xplat/features';
 import { UIModule } from '../ui';
 import { NAVIGATION_COMPONENTS } from './components';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatButtonModule} from '@angular/material/button';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatIconModule} from '@angular/material/icon';
-import {MatListModule} from '@angular/material/list';
-import {RouterLink, RouterLinkActive, RouterOutlet} from '@angular/router';
-import {LayoutModule} from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
   imports: [
@@ -22,7 +22,7 @@ import {LayoutModule} from '@angular/cdk/layout';
     MatListModule,
     RouterLink,
     RouterLinkActive,
-    RouterOutlet
+    RouterOutlet,
   ],
   declarations: [...NAVIGATION_COMPONENTS],
   exports: [...NAVIGATION_COMPONENTS],

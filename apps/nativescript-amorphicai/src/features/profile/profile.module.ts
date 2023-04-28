@@ -1,15 +1,19 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA} from '@angular/core';
+import {
+  CUSTOM_ELEMENTS_SCHEMA,
+  NgModule,
+  NO_ERRORS_SCHEMA,
+} from '@angular/core';
 
 import { SharedModule } from '../shared/shared.module';
-import {PROFILE_COMPONENTS, ProfileComponent} from './components';
-import {Routes} from "@angular/router";
-import {NativeScriptRouterModule} from "@nativescript/angular";
+import { PROFILE_COMPONENTS, ProfileComponent } from './components';
+import { Routes } from '@angular/router';
+import { NativeScriptRouterModule } from '@nativescript/angular';
 
 export const routes: Routes = [
   {
     path: '',
-    component: ProfileComponent
-  }
+    component: ProfileComponent,
+  },
 ];
 
 @NgModule({

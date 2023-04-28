@@ -1,2 +1,2 @@
-export * from "./base";
-export { UISharedModule } from "./ui.module";
+export * from './base';
+export { UISharedModule } from './ui.module';

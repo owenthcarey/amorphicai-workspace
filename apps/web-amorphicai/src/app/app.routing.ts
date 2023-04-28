@@ -9,23 +9,28 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
-    loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule)
+    loadChildren: () =>
+      import('./features/home/home.module').then((m) => m.HomeModule),
   },
   {
     path: 'messages',
-    loadChildren: () => import('./features/messages/messages.module').then(m => m.MessagesModule)
+    loadChildren: () =>
+      import('./features/messages/messages.module').then(
+        (m) => m.MessagesModule
+      ),
   },
   {
     path: 'profile',
-    loadChildren: () => import('./features/profile/profile.module').then(m => m.ProfileModule)
-  }
+    loadChildren: () =>
+      import('./features/profile/profile.module').then((m) => m.ProfileModule),
+  },
 ];
 
 @NgModule({
-  imports: [SharedModule, RouterModule.forRoot(routes)]
+  imports: [SharedModule, RouterModule.forRoot(routes)],
 })
 export class AppRoutingModule {}

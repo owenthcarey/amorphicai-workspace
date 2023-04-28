@@ -40,4 +40,4 @@ Thumbs.db
 
 .angular
 
-.env
+libs/xplat/core/src/lib/environments/base/secrets.ts

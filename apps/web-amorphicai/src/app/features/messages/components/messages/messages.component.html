@@ -1,1 +1,10 @@
-<div>Messages</div>
+<cdk-virtual-scroll-viewport itemSize="50" class="example-viewport">
+  <div
+    *cdkVirtualFor="let message of messages; let i = index"
+    class="example-item"
+  >
+    <div (click)="goToMessageDetail(i)">
+      {{ message }}
+    </div>
+  </div>
+</cdk-virtual-scroll-viewport>

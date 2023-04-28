@@ -1,4 +1,3 @@
-
 describe('Web App component generic test', () => {
   it('Should be true', () => {
     expect(true).toBeTruthy();
@@ -72,4 +71,4 @@ describe('AppComponent', () => {
     })
     );
 });
-*/   
+*/

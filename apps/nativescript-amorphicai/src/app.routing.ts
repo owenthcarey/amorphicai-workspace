@@ -12,26 +12,31 @@ const routes: Routes = [
   {
     path: '',
     redirectTo: '/home',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
     path: 'home',
-    loadChildren: () => import('./features/home/home.module').then(m => m.HomeModule),
-    outlet: 'homeTab'
+    loadChildren: () =>
+      import('./features/home/home.module').then((m) => m.HomeModule),
+    outlet: 'homeTab',
   },
   {
     path: 'messages',
-    loadChildren: () => import('./features/messages/messages.module').then(m => m.MessagesModule),
-    outlet: 'messagesTab'
+    loadChildren: () =>
+      import('./features/messages/messages.module').then(
+        (m) => m.MessagesModule
+      ),
+    outlet: 'messagesTab',
   },
   {
     path: 'profile',
-    loadChildren: () => import('./features/profile/profile.module').then(m => m.ProfileModule),
-    outlet: 'profileTab'
-  }
+    loadChildren: () =>
+      import('./features/profile/profile.module').then((m) => m.ProfileModule),
+    outlet: 'profileTab',
+  },
 ];
 
 @NgModule({
-  imports: [SharedModule, NativeScriptRouterModule.forRoot(routes)]
+  imports: [SharedModule, NativeScriptRouterModule.forRoot(routes)],
 })
 export class AppRoutingModule {}

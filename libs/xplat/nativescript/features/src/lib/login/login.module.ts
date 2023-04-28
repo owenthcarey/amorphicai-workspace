@@ -1,6 +1,6 @@
 import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { LoginModule as SharedLoginModule } from '@amorphicai-workspace/xplat/features';
-import { UIModule } from '../ui/ui.module';
+import { UIModule } from '../ui';
 import { LOGIN_COMPONENTS } from './components';
 
 @NgModule({

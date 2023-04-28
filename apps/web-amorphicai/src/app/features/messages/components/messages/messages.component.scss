@@ -1,0 +1,14 @@
+.example-viewport {
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  overflow: auto;
+}
+
+.example-item {
+  height: 50px;
+  line-height: 50px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ccc;
+}

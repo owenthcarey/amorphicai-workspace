@@ -1,0 +1,8 @@
+<div class="card-container">
+  <mat-card #bottomCard>
+    <img mat-card-image [src]="bottomImageUrl" alt="Card image" />
+  </mat-card>
+  <mat-card #topCard cdkDrag (cdkDragEnded)="onDragEnd($event)">
+    <img mat-card-image [src]="topImageUrl" alt="Card image" />
+  </mat-card>
+</div>

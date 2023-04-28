@@ -1,1 +1,2 @@
-export { AmorphicaiWorkspaceCoreModule } from "./core.module";
+export * from './services';
+export { AmorphicaiWorkspaceCoreModule } from './core.module';

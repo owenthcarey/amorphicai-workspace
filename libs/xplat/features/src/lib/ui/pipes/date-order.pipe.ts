@@ -1,7 +1,7 @@
-import { Pipe, PipeTransform } from "@angular/core";
+import { Pipe, PipeTransform } from '@angular/core';
 
 @Pipe({
-  name: "orderByDate",
+  name: 'orderByDate',
   pure: true,
 })
 export class DateOrderPipe implements PipeTransform {

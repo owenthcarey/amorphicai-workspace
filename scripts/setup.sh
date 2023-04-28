@@ -12,7 +12,7 @@ npx create-nx-workspace@latest amorphicai-workspace
 cd amorphicai-workspace
 
 # 4. Install dev dependencies
-npm install --save-dev @nstudio/xplat typescript@">=4.8.2 <5.0"
+npm install --save-dev @nativescript/nx @nstudio/xplat @nx/nest typescript@">=4.8.2 <5.0"
 
 # 5. Generate a new Angular web app with routing enabled and no Standalone Components
 npx nx generate @nstudio/xplat:app --name=amorphicai
@@ -22,6 +22,10 @@ npx nx generate @nstudio/xplat:app --name=amorphicai
 
 # 7. Generate a new Electron desktop app with routing enabled and Angular as the front end
 npx nx generate @nstudio/xplat:app --name=amorphicai --target=web-amorphicai
+
+# TODO
+npx nx g @nx/nest:app nest-amorphicai --frontendProject=web-amorphicai
+npx nx g @nx/nest:lib nest --directory=libs/xplat
 
 # 8. Generate new shared TypeScript model classes
 npx nx generate @nrwl/angular:class --name=models/user --project=xplat-core --type=model

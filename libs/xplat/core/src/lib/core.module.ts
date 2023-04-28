@@ -4,18 +4,18 @@ import {
   Optional,
   SkipSelf,
   Inject,
-} from "@angular/core";
-import { APP_BASE_HREF, CommonModule } from "@angular/common";
+} from '@angular/core';
+import { APP_BASE_HREF, CommonModule } from '@angular/common';
 
 // libs
-import { TranslateService } from "@ngx-translate/core";
-import { throwIfAlreadyLoaded } from "@amorphicai-workspace/xplat/utils";
+import { TranslateService } from '@ngx-translate/core';
+import { throwIfAlreadyLoaded } from '@amorphicai-workspace/xplat/utils';
 
 // app
-import { environment } from "./environments/environment";
-import { LogService } from "./services/log.service";
-import { PlatformLanguageToken } from "./services/tokens";
-import { WindowService } from "./services/window.service";
+import { environment } from './environments/environment';
+import { LogService } from './services/log.service';
+import { PlatformLanguageToken } from './services/tokens';
+import { WindowService } from './services/window.service';
 
 /**
  * DEBUGGING
@@ -37,7 +37,7 @@ export class CoreModule {
         WindowService,
         {
           provide: APP_BASE_HREF,
-          useValue: "/",
+          useValue: '/',
         },
         ...configuredProviders,
       ],
@@ -51,7 +51,7 @@ export class CoreModule {
     @Inject(PlatformLanguageToken) lang: string,
     translate: TranslateService
   ) {
-    throwIfAlreadyLoaded(parentModule, "CoreModule");
+    throwIfAlreadyLoaded(parentModule, 'CoreModule');
 
     // ensure default platform language is set
     translate.use(lang);

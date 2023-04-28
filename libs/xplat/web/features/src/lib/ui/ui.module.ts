@@ -1,11 +1,11 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { RouterModule } from "@angular/router";
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 
 // libs
-import { UISharedModule } from "@amorphicai-workspace/xplat/features";
-import { UI_COMPONENTS } from "./components";
+import { UISharedModule } from '@amorphicai-workspace/xplat/features';
+import { UI_COMPONENTS } from './components';
 
 const MODULES = [
   CommonModule,

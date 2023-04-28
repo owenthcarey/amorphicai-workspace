@@ -1,9 +1,9 @@
-import { Component } from "@angular/core";
+import { Component } from '@angular/core';
 
-import { HeaderBaseComponent } from "@amorphicai-workspace/xplat/features";
+import { HeaderBaseComponent } from '@amorphicai-workspace/xplat/features';
 
 @Component({
-  selector: "amorphicai-workspace-header",
-  templateUrl: "header.component.html",
+  selector: 'amorphicai-workspace-header',
+  templateUrl: 'header.component.html',
 })
 export class HeaderComponent extends HeaderBaseComponent {}
