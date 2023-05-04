@@ -24,8 +24,8 @@ npx nx generate @nstudio/xplat:app --name=amorphicai
 npx nx generate @nstudio/xplat:app --name=amorphicai --target=web-amorphicai
 
 # TODO
-npx nx g @nx/nest:app nest-amorphicai --frontendProject=web-amorphicai
-npx nx g @nx/nest:lib nest --directory=libs/xplat
+npx nx g @nx/nest:app api-amorphicai --frontendProject=web-amorphicai
+npx nx g @nx/nest:lib api --directory=libs/xplat
 
 # 8. Generate new shared TypeScript model classes
 npx nx generate @nrwl/angular:class --name=models/user --project=xplat-core --type=model
@@ -43,3 +43,6 @@ npx nx run nativescript-amorphicai:ios
 
 # 12. Run the Electron desktop app
 npm run start.electron.amorphicai
+
+# TODO
+npx nx serve api-amorphicai
