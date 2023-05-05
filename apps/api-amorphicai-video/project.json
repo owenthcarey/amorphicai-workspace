@@ -1,0 +1,64 @@
+{
+  "name": "api-amorphicai-video",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/api-amorphicai-video/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/api-amorphicai-video",
+        "main": "apps/api-amorphicai-video/src/main.ts",
+        "tsConfig": "apps/api-amorphicai-video/tsconfig.app.json",
+        "assets": ["apps/api-amorphicai-video/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/api-amorphicai-video/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "api-amorphicai-video:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "api-amorphicai-video:build:development"
+        },
+        "production": {
+          "buildTarget": "api-amorphicai-video:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/api-amorphicai-video/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/api-amorphicai-video/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}
