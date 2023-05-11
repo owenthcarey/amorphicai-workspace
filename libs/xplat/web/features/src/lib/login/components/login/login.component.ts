@@ -57,11 +57,9 @@ export class LoginComponent
             .checkIfUserExists(authResult.user.uid)
             .then((userExists) => {
               console.log('User exists:', userExists);
+              this.dialog.closeAll();
               if (!userExists) {
-                // this.router.navigate(['/login-user-form']);
-                // Close the current dialog and open a new dialog with LoginUserFormComponent
-                this.dialog.closeAll(); // Close the LoginComponent dialog
-                this.dialog.open(LoginUserFormComponent); // Open the LoginUserFormComponent dialog
+                this.dialog.open(LoginUserFormComponent);
               }
             });
           // Prevents redirect after authentication.

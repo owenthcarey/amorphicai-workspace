@@ -37,7 +37,12 @@
       <div class="form-row">
         <div class="form-col">
           <mat-form-field class="form-field">
-            <input matInput placeholder="Username" formControlName="username" (input)="onInput()" />
+            <input
+              matInput
+              placeholder="Username"
+              formControlName="username"
+              (input)="onInput()"
+            />
             <mat-error
               *ngIf="userForm.controls['username'].hasError('required')"
             >

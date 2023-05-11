@@ -4,6 +4,7 @@ import { Gender, User } from '@amorphicai-workspace/xplat/core';
 import { LoginUserFormBaseComponent } from '@amorphicai-workspace/xplat/features';
 import { FirestoreService } from '@amorphicai-workspace/xplat/web/core';
 import { Auth } from '@angular/fire/auth';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'amorphicai-workspace-login-user-form',
@@ -24,6 +25,7 @@ export class LoginUserFormComponent extends LoginUserFormBaseComponent {
 
   constructor(
     private auth: Auth,
+    private dialogRef: MatDialogRef<LoginUserFormComponent>,
     private firestoreService: FirestoreService,
     private fb: FormBuilder
   ) {
@@ -48,6 +50,7 @@ export class LoginUserFormComponent extends LoginUserFormBaseComponent {
     );
     if (!this.usernameExists) {
       this.firestoreService.addNewUser(user);
+      this.dialogRef.close();
     }
     console.log('Username exists:', this.usernameExists);
     console.log(user.toObject());
