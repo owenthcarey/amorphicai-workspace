@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "clean": "npx rimraf hooks node_modules package-lock.json yarn.lock && npm install",
-    "prettier": "npx prettier --write '**/*.{html,scss,ts}'"
+    "prettier": "npx prettier --write '**/*.{hbs,html,scss,ts}'"
   },
   "private": true,
   "devDependencies": {
@@ -92,6 +92,7 @@
     "axios": "^1.0.0",
     "core-js": "^3.30.1",
     "firebase": "^9.20.0",
+    "firebase-admin": "^11.8.0",
     "firebaseui": "^6.0.2",
     "hbs": "^4.2.0",
     "nativescript-ngx-fonticon": "~7.0.0",

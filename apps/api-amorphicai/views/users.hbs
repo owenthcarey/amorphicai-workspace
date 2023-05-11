@@ -1,16 +1,17 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <title>App</title>
-</head>
-<body>
-<ul>
-  {{#each users}}
-    <li>
-      {{this.firstName}} {{this.lastName}} ({{this.username}})
-    </li>
-  {{/each}}
-</ul>
-</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>App</title>
+  </head>
+  <body>
+    <ul>
+      {{#each users}}
+        <li>
+          {{this.firstName}}
+          {{this.lastName}}
+          ({{this.username}})
+        </li>
+      {{/each}}
+    </ul>
+  </body>
 </html>

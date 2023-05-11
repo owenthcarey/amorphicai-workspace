@@ -2,12 +2,17 @@ import { Injectable } from '@nestjs/common';
 import { Gender } from '../../../../libs/xplat/core/src/lib/enums/gender.enum';
 import { User } from '../../../../libs/xplat/core/src/lib/models/user.model';
 // import { User } from '@amorphicai-workspace/xplat/core';
+import * as admin from 'firebase-admin';
 
 @Injectable()
 export class AppService {
+  private db: admin.firestore.Firestore;
+
+  constructor() {
+    this.db = admin.firestore();
+  }
+
   getData(): { message: string } {
-    const user = new User();
-    console.log('User:', user);
     return { message: 'Hello API' };
   }
 
@@ -27,6 +32,15 @@ export class AppService {
       );
       users.push(user);
     }
+    return users;
+  }
+
+  async getUsersFromFirestore(): Promise<User[]> {
+    const usersSnapshot = await this.db.collection('users').get();
+    const users: User[] = [];
+    usersSnapshot.forEach((doc) => {
+      users.push(doc.data() as User);
+    });
     return users;
   }
 }

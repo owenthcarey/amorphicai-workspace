@@ -16,4 +16,10 @@ export class AppController {
   getUsers() {
     return { users: this.appService.getUsers() };
   }
+
+  @Get('users-firestore')
+  @Render('users.hbs')
+  async getUsersFromFirestore() {
+    return { users: await this.appService.getUsersFromFirestore() };
+  }
 }

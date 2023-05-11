@@ -40,4 +40,5 @@ Thumbs.db
 
 .angular
 
-libs/xplat/core/src/lib/environments/base/secrets.ts
+secrets.ts
+*adminsdk*.json
