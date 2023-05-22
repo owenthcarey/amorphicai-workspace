@@ -3,7 +3,7 @@ import { generateUuid } from '@amorphicai-workspace/xplat/utils';
 
 export class User {
   constructor(
-    readonly birthdate?: Date,
+    readonly birthDate?: Date,
     readonly countryCode?: string,
     readonly creationDateTime?: Date,
     readonly firstName?: string,
@@ -16,7 +16,7 @@ export class User {
 
   public toObject(): object {
     return {
-      birthdate: this.birthdate ?? null,
+      birthDate: this.birthDate ?? null,
       countryCode: this.countryCode ?? null,
       creationDateTime: this.creationDateTime ?? null,
       firstName: this.firstName ?? null,

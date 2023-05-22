@@ -13,7 +13,7 @@ describe('User', () => {
 
   it('should correctly assign properties', () => {
     const userData = {
-      birthdate: new Date(),
+      birthDate: new Date(),
       countryCode: 'US',
       creationDateTime: new Date(),
       firstName: 'John',
@@ -25,7 +25,7 @@ describe('User', () => {
     };
 
     const user = new User(
-      userData.birthdate,
+      userData.birthDate,
       userData.countryCode,
       userData.creationDateTime,
       userData.firstName,
@@ -36,7 +36,7 @@ describe('User', () => {
       userData.username
     );
 
-    expect(user.birthdate).toEqual(userData.birthdate);
+    expect(user.birthDate).toEqual(userData.birthDate);
     expect(user.countryCode).toBe(userData.countryCode);
     expect(user.creationDateTime).toEqual(userData.creationDateTime);
     expect(user.firstName).toBe(userData.firstName);
@@ -49,7 +49,7 @@ describe('User', () => {
 
   it('should correctly transform to object', () => {
     const userData = {
-      birthdate: new Date(),
+      birthDate: new Date(),
       countryCode: 'US',
       creationDateTime: new Date(),
       firstName: 'John',
@@ -61,7 +61,7 @@ describe('User', () => {
     };
 
     const user = new User(
-      userData.birthdate,
+      userData.birthDate,
       userData.countryCode,
       userData.creationDateTime,
       userData.firstName,
@@ -75,7 +75,7 @@ describe('User', () => {
     const userObject = user.toObject();
 
     expect(userObject).toEqual({
-      birthdate: userData.birthdate,
+      birthDate: userData.birthDate,
       countryCode: userData.countryCode,
       creationDateTime: userData.creationDateTime,
       firstName: userData.firstName,

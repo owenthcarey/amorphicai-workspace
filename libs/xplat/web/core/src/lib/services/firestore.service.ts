@@ -1,5 +1,11 @@
 import { Injectable } from '@angular/core';
-import { FirestoreBaseService, User } from '@amorphicai-workspace/xplat/core';
+import {
+  FirestoreBaseService,
+  Match,
+  Message,
+  Swipe,
+  User,
+} from '@amorphicai-workspace/xplat/core';
 import { Observable } from 'rxjs';
 import {
   collection,
@@ -51,6 +57,95 @@ export class FirestoreService extends FirestoreBaseService {
   //   const gameDocument = doc(gamesCollection, game.gameId ?? '');
   //   await setDoc(gameDocument, game.toObject());
   // }
+
+  // ----------------------------------------
+  // endregion
+  // region Match
+  // ----------------------------------------
+
+  async addNewMatch(match: Match): Promise<void> {
+    const matchesCollection = collection(
+      this.firestore,
+      this.matchesCollectionPath
+    );
+    const matchDocument = doc(matchesCollection);
+    await setDoc(matchDocument, match);
+  }
+
+  getUserMatches(userId: string): Observable<Match[]> {
+    const matchesCollection = collection(
+      this.firestore,
+      this.matchesCollectionPath
+    );
+    const matchesQuery = query(
+      matchesCollection,
+      where('userId1', '==', userId),
+      where('userId2', '==', userId)
+    );
+    return collectionData(matchesQuery) as Observable<Match[]>;
+  }
+
+  // ----------------------------------------
+  // endregion
+  // region Message
+  // ----------------------------------------
+
+  async addNewMessage(message: Message): Promise<void> {
+    const messagesCollection = collection(
+      this.firestore,
+      this.messagesCollectionPath
+    );
+    const messageDocument = doc(messagesCollection);
+    await setDoc(messageDocument, message);
+  }
+
+  getMessages(matchId: string): Observable<Message[]> {
+    const messagesCollection = collection(
+      this.firestore,
+      this.messagesCollectionPath
+    );
+    const messagesQuery = query(
+      messagesCollection,
+      where('matchId', '==', matchId)
+    );
+    return collectionData(messagesQuery) as Observable<Message[]>;
+  }
+
+  // ----------------------------------------
+  // endregion
+  // region Profile
+  // ----------------------------------------
+
+  // ----------------------------------------
+  // endregion
+  // region Swipe
+  // ----------------------------------------
+
+  async addNewSwipe(swipe: Swipe): Promise<void> {
+    const swipesCollection = collection(
+      this.firestore,
+      this.swipesCollectionPath
+    );
+    const swipeDocument = doc(swipesCollection);
+    await setDoc(swipeDocument, swipe);
+  }
+
+  getUserSwipes(userId: string): Observable<Swipe[]> {
+    const swipesCollection = collection(
+      this.firestore,
+      this.swipesCollectionPath
+    );
+    const swipesQuery = query(
+      swipesCollection,
+      where('swiperId', '==', userId)
+    );
+    return collectionData(swipesQuery) as Observable<Swipe[]>;
+  }
+
+  // ----------------------------------------
+  // endregion
+  // region User
+  // ----------------------------------------
 
   /**
    * Add a new game to Firestore.
