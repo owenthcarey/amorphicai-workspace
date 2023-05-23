@@ -1,1 +1,3 @@
-export abstract class AuthBaseService {}
+export abstract class AuthBaseService {
+  abstract getCurrentUserId(): Promise<string | null>;
+}
